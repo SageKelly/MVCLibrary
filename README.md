@@ -1,2 +1,0 @@
-# MVCLibrary
-Playground for MVC

@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcChallenge2016", "MvcChallenge2016\MvcChallenge2016.csproj", "{382D59C2-E479-4F0F-A2F6-1F873995012A}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "LibraryDatabase", "..\..\Documents\Visual Studio 2015\Projects\LibraryDatabase\LibraryDatabase.sqlproj", "{3EBE3306-6654-4997-8BB6-A216257FD3DC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{382D59C2-E479-4F0F-A2F6-1F873995012A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{382D59C2-E479-4F0F-A2F6-1F873995012A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{382D59C2-E479-4F0F-A2F6-1F873995012A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{382D59C2-E479-4F0F-A2F6-1F873995012A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EBE3306-6654-4997-8BB6-A216257FD3DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EBE3306-6654-4997-8BB6-A216257FD3DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EBE3306-6654-4997-8BB6-A216257FD3DC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{3EBE3306-6654-4997-8BB6-A216257FD3DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EBE3306-6654-4997-8BB6-A216257FD3DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EBE3306-6654-4997-8BB6-A216257FD3DC}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
