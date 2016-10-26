@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcChallenge2016", "MvcChallenge2016\MvcChallenge2016.csproj", "{382D59C2-E479-4F0F-A2F6-1F873995012A}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "LibraryDatabase", "..\..\Documents\Visual Studio 2015\Projects\LibraryDatabase\LibraryDatabase.sqlproj", "{3EBE3306-6654-4997-8BB6-A216257FD3DC}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "LibraryDatabase", "LibraryDatabase\LibraryDatabase.sqlproj", "{3EBE3306-6654-4997-8BB6-A216257FD3DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

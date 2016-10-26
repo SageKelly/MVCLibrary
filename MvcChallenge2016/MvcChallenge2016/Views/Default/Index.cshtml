@@ -1,0 +1,34 @@
+﻿@model MvcChallenge2016.Models.BookListModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<div>
+    <h4>BookListModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author(s)</th>
+                </tr>
+            </thead>
+
+            @foreach (var book in Model.Books)
+            {
+                <tr>
+                    <td>@book.AuthorName</td>
+                </tr>
+            }
+        </table>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

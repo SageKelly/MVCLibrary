@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MvcChallenge2016.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,19 @@ namespace MvcChallenge2016.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult Edit(BookEditModel model)
+        {
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Guid? book)
+        {
+            BookEditModel model = new BookEditModel();
+            return View("Edit",model);
         }
     }
 }
