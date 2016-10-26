@@ -21,7 +21,7 @@ namespace MvcChallenge2016.Models
         {
             Book book = dbContext.Books.FirstOrDefault(x => x.BookID == BookID);
 
-            if (book!=null)
+            if (book != null)
             {
                 this.BookID = bookID;
                 this.Title = book.Title;

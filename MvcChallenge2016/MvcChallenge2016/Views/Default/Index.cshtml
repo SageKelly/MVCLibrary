@@ -22,6 +22,7 @@
             @foreach (var book in Model.Books)
             {
                 <tr>
+                    <td><a href="@Url.Action("Edit","Default", new {book.BookID})">@book.Title</a></td>
                     <td>@book.AuthorName</td>
                 </tr>
             }
