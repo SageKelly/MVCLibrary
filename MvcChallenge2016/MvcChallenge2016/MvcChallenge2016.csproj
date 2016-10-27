@@ -160,6 +160,7 @@
     <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Views\Default\Edit.cshtml" />
     <Content Include="Views\Default\Add.cshtml" />
+    <Content Include="Views\Default\BookList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

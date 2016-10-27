@@ -1,13 +1,4 @@
 ﻿@model MvcChallenge2016.Models.BookListModel
-
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<h2>Index</h2>
-
-<div>
     <h4>BookListModel</h4>
     <hr />
     <table border="1">
@@ -27,25 +18,6 @@
             </tr>
         }
     </table>
-    <div id="editView" style="display:none;">
-
-    </div>
-</div>
 <p>
-    @Html.ActionLink("Add", "Add", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Add", "Add", new { /* id = Model.PrimaryKey */ })
 </p>
-<script>
-    $(function () {
-        $("a").click(function () {
-            var bookID = $(this).attr('id')
-            $.ajax({
-                type: 'GET'
-                , url: '@Url.Action("Edit", "Default")'
-                , data: { BookID: bookID }
-                , success: function (response) {
-                    $("#editView").html(response).show(500);
-                }
-            })
-        })
-    });
-</script>

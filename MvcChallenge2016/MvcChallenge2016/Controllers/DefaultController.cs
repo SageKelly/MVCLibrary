@@ -16,7 +16,7 @@ namespace MvcChallenge2016.Controllers
         {
             BookListModel model = new BookListModel();
             model.Initialize(dbContext);
-            return View(model);
+            return View("BookList",model);
         }
 
         [HttpGet]
@@ -25,7 +25,7 @@ namespace MvcChallenge2016.Controllers
             BookEditModel model = new BookEditModel();
             Book b = dbContext.Books.FirstOrDefault(x => x.BookID == BookID);
             model.Load(b);
-            return View(model);
+            return PartialView("Edit", model);
         }
 
         [HttpPost]
@@ -73,6 +73,7 @@ namespace MvcChallenge2016.Controllers
             Book b = dbContext.Books.FirstOrDefault(x => x.BookID == bookID);
             dbContext.Books.Remove(b);
             dbContext.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

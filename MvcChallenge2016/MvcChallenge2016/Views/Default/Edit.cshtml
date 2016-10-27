@@ -1,7 +1,5 @@
 ﻿@model MvcChallenge2016.Models.BookEditModel
 
-@using (Html.BeginForm())
-{
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
@@ -11,7 +9,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.BookID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.BookID, new { htmlAttributes = new { @class = "form-control", @disabled = "true" } })
+                @Html.EditorFor(model => model.BookID, new { htmlAttributes = new { @class = "form-control editBookID", @disabled = "true" } })
                 @Html.ValidationMessageFor(model => model.BookID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -19,7 +17,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", @value= Model.Title } })
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control editTitle", @value= Model.Title } })
                 @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -27,23 +25,41 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Author, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Author, new { htmlAttributes = new { @class = "form-control", @value = Model.Author } })
+                @Html.EditorFor(model => model.Author, new { htmlAttributes = new { @class = "form-control editAuthor", @value = Model.Author } })
                 @Html.ValidationMessageFor(model => model.Author, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="button" value="Save" id="bookEditSave" class="btn btn-default" />
             </div>
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script>
+    $(function () {
+        $("#bookEditSave").click(function () {
+            var bookID = $(".editBookID:first").val()
+            var title = $(".editTitle:first").val()
+            var author = $(".editAuthor:first").val()
+            $("#editView").hide(500, function () {
+                $.ajax({
+                    type: 'POST'
+                    , url: '@Url.Action("Edit","Default")'
+                    , data: { BookID: bookID, Title: title, Author: author }
+                    , success: function (response) {
+                        $("#indexView").html(response);
+                    }
+                    , error: function (response) {
+                        $("#editView").html(response).show(500)
+                    }
+                })
+            })
+        })
+    })
+</script>

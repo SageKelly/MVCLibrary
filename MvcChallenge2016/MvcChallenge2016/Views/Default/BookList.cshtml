@@ -1,0 +1,41 @@
+﻿@model MvcChallenge2016.Models.BookListModel
+
+@{
+    ViewBag.Title = "BookList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>BookList</h2>
+
+<div id="indexView">
+    @{
+        Html.RenderPartial("~/Views/Default/Index.cshtml", Model);
+    }
+</div>
+<div id="editView" style="display:none;">
+
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<script>
+    $(function () {
+        $("a").click(function (event) {
+            event.preventDefault();
+            var a = $(this)
+            $("#editView").hide(500, function () {
+                var bookID = a.attr('id')
+                $.ajax({
+                    type: 'GET'
+                    , url: '@Url.Action("Edit", "Default")'
+                    , data: { BookID: bookID }
+                    , success: function (response) {
+                        $("#editView").html(response)
+                        $("#editView").show(500)
+                    }
+                })
+            })
+        })
+    });
+</script>
