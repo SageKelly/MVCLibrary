@@ -17,16 +17,28 @@ namespace MvcChallenge2016.Models
         [Required(AllowEmptyStrings = false, ErrorMessage = "This is required")]
         public string Author { get; set; }
 
+
+        public void Load(Book model)
+        {
+            BookID = model.BookID;
+            Title = model.Title;
+            Author = model.AuthorName;
+        }
+
         public void Initialize(LibraryEntities dbContext, Guid? bookID)
         {
-            Book book = dbContext.Books.FirstOrDefault(x => x.BookID == BookID);
+            //For extra stuff, but I don't have any.
+        }
 
-            if (book != null)
-            {
-                this.BookID = bookID;
-                this.Title = book.Title;
-                this.Author = book.AuthorName;
-            }
+        public void Set(Book model)
+        {
+            /*
+            According to CSI, there's no need to pass the parameter by reference,
+            so, at this point, I'm not sure how the information gets back now.
+            */
+            model.BookID = (Guid)this.BookID;
+            model.AuthorName = this.Author;
+            model.Title = this.Title;
         }
     }
 }

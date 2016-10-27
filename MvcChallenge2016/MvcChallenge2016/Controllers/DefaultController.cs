@@ -10,26 +10,22 @@ namespace MvcChallenge2016.Controllers
 {
     public class DefaultController : Controller
     {
+        LibraryEntities dbContext = new LibraryEntities();
         // GET: Default
         public ActionResult Index()
         {
-            using (LibraryEntities dbContext = new LibraryEntities())
-            {
-                BookListModel model = new BookListModel();
-                model.Initialize(dbContext);
-                return View(model);
-            }
+            BookListModel model = new BookListModel();
+            model.Initialize(dbContext);
+            return View(model);
         }
 
         [HttpGet]
         public ActionResult Edit(Guid? BookID)
         {
-            using (LibraryEntities dbContext = new LibraryEntities())
-            {
-                BookEditModel model = new BookEditModel();
-                model.Initialize(dbContext, BookID);
-                return View(model);
-            }
+            BookEditModel model = new BookEditModel();
+            Book b = dbContext.Books.FirstOrDefault(x => x.BookID == BookID);
+            model.Load(b);
+            return View(model);
         }
 
         [HttpPost]
@@ -39,17 +35,13 @@ namespace MvcChallenge2016.Controllers
             {
                 return View(model);
             }
-            using (LibraryEntities dbContext = new LibraryEntities())
-            {
-                Book b = new Book();
-                b.BookID = (Guid)model.BookID;
-                b.Title = model.Title;
-                b.AuthorName = model.Author;
+            Book b = dbContext.Books.FirstOrDefault(x => x.BookID == model.BookID);
+            model.Set(b);
 
-                dbContext.Books.Add(b);
-                dbContext.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            //There is some magic that goes on here.
+            //How does it know what needs to be saved if I'm not telling it anywhere in the code?
+            dbContext.SaveChanges();
+            return RedirectToAction("Index");
         }
 
 
@@ -67,17 +59,20 @@ namespace MvcChallenge2016.Controllers
             {
                 return View(model);
             }
-            using (LibraryEntities dbContext = new LibraryEntities())
-            {
-                Book b = new Book();
-                b.BookID = (Guid)model.BookID;
-                b.Title = model.BookTitle;
-                b.AuthorName = model.AuthorName;
+            Book b = new Book();
+            model.Set(b);
 
-                dbContext.Books.Add(b);
-                dbContext.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            dbContext.Books.Add(b);
+            dbContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult Delete(Guid bookID)
+        {
+            Book b = dbContext.Books.FirstOrDefault(x => x.BookID == bookID);
+            dbContext.Books.Remove(b);
+            dbContext.SaveChanges();
         }
     }
 }
