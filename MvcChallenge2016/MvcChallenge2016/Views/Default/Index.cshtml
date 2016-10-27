@@ -10,26 +10,42 @@
 <div>
     <h4>BookListModel</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <table>
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Author(s)</th>
-                </tr>
-            </thead>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author(s)</th>
+            </tr>
+        </thead>
 
-            @foreach (var book in Model.Books)
+        @foreach (var book in Model.Books)
             {
-                <tr>
-                    <td><a href="@Url.Action("Edit","Default", new {book.BookID})">@book.Title</a></td>
-                    <td>@book.AuthorName</td>
-                </tr>
-            }
-        </table>
-    </dl>
+            <tr>
+                <td><a href="@Url.Action("Edit","Default", new {book.BookID})" id="@book.BookID">@book.Title</a></td>
+                <td>@book.AuthorName</td>
+                <td><span class="glyphicon glyphicon-trash"></span></td>
+            </tr>
+        }
+    </table>
+    <div id="editView" style="display:none;">
+
+    </div>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Add", "Add", new { /* id = Model.PrimaryKey */ }) |
 </p>
+<script>
+    $(function () {
+        $("a").click(function () {
+            var bookID = $(this).attr('id')
+            $.ajax({
+                type: 'GET'
+                , url: '@Url.Action("Edit", "Default")'
+                , data: { BookID: bookID }
+                , success: function (response) {
+                    $("#editView").html(response).show(500);
+                }
+            })
+        })
+    });
+</script>
