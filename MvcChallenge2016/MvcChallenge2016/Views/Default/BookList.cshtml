@@ -4,11 +4,13 @@
     ViewBag.Title = "BookList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<input type="hidden" id="EditBookUrl" value="@Url.Action("Edit","Default")"/>
 
 <h2>BookList</h2>
+<script type="text/javascript" src="~/Scripts/BookProcessing.js"></script>
 
 <div id="indexView">
-    @{ 
+    @{
         //I have no idea why this is the ONLY way to make Model work, but whatever
         Html.RenderPartial("Index", Model);
     }
@@ -20,23 +22,3 @@
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
-<script>
-    $(function () {
-        $("a").click(function (event) {
-            event.preventDefault();
-            var a = $(this)
-            $("#editView").hide(500, function () {
-                var bookID = a.attr('id')
-                $.ajax({
-                    type: 'GET'
-                    , url: '@Url.Action("Edit", "Default")'
-                    , data: { BookID: bookID }
-                    , success: function (response) {
-                        $("#editView").html(response)
-                        $("#editView").show(500)
-                    }
-                })
-            })
-        })
-    });
-</script>

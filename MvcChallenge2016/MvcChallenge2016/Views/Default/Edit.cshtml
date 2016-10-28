@@ -37,29 +37,6 @@
         </div>
     </div>
 
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-<script src="~/Scripts/jquery-1.10.2.js"></script>
-<script>
-    $(function () {
-        $("#bookEditSave").click(function () {
-            var bookID = $(".editBookID:first").val()
-            var title = $(".editTitle:first").val()
-            var author = $(".editAuthor:first").val()
-            $("#editView").hide(500, function () {
-                $.ajax({
-                    type: 'POST'
-                    , url: '@Url.Action("Edit","Default")'
-                    , data: { BookID: bookID, Title: title, Author: author }
-                    , success: function (response) {
-                        $("#indexView").html(response);
-                    }
-                    , error: function (response) {
-                        $("#editView").html(response).show(500)
-                    }
-                })
-            })
-        })
-    })
-</script>
+
+@*<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="~/Scripts/BookProcessing.js"></script>*@

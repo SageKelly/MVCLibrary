@@ -131,6 +131,7 @@
       <DependentUpon>LibrarySchema.edmx</DependentUpon>
       <LastGenOutput>LibrarySchema.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\BookProcessing.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Schema\LibrarySchema.edmx">
