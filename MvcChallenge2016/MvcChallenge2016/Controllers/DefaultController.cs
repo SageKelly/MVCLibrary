@@ -12,11 +12,19 @@ namespace MvcChallenge2016.Controllers
     {
         LibraryEntities dbContext = new LibraryEntities();
         // GET: Default
-        public ActionResult Index()
+        public ActionResult Index(bool Layout = true)
         {
             BookListModel model = new BookListModel();
             model.Initialize(dbContext);
-            return View("BookList",model);
+
+            if (Layout)
+            {
+                return View("BookList", model);
+            }
+            else
+            {
+                return PartialView("Index", model);
+            }
         }
 
         [HttpGet]
@@ -41,7 +49,7 @@ namespace MvcChallenge2016.Controllers
             //There is some magic that goes on here.
             //How does it know what needs to be saved if I'm not telling it anywhere in the code?
             dbContext.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { Layout = false });
         }
 
 

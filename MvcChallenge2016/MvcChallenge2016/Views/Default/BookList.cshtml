@@ -8,8 +8,9 @@
 <h2>BookList</h2>
 
 <div id="indexView">
-    @{
-        Html.RenderPartial("~/Views/Default/Index.cshtml", Model);
+    @{ 
+        //I have no idea why this is the ONLY way to make Model work, but whatever
+        Html.RenderPartial("Index", Model);
     }
 </div>
 <div id="editView" style="display:none;">
