@@ -10,13 +10,13 @@ namespace MvcChallenge2016.Models
     {
         public Guid? BookID { get; set; }
         public string BookTitle { get; set; }
-        public string AuthorName { get; set; }
+        public string Author { get; set; }
 
         public void Load(Book model)
         {
             BookID = model.BookID;
             BookTitle = model.Title;
-            AuthorName = model.AuthorName;
+            Author = model.AuthorName;
         }
 
         public void Initialize(LibraryEntities dbContext, Guid? bookID)
@@ -30,7 +30,7 @@ namespace MvcChallenge2016.Models
             According to CSI, there's no need to pass the parameter by reference,
             so, at this point, I'm not sure how the information gets back now.
             */
-            model.AuthorName = this.AuthorName;
+            model.AuthorName = this.Author;
             model.Title = this.BookTitle;
         }
     }

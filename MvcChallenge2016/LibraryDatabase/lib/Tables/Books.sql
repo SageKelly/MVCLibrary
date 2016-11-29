@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [lib].[Books] (
     [BookID]     UNIQUEIDENTIFIER NOT NULL,
-    [AuthorName] NVARCHAR (MAX)   NOT NULL,
+    [Author] NVARCHAR (MAX)   NOT NULL,
     [Title]      NVARCHAR (MAX)   NOT NULL,
     CONSTRAINT [PK_Books] PRIMARY KEY CLUSTERED ([BookID] ASC)
 );
